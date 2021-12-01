@@ -1,5 +1,6 @@
 import tkinter
 from tkinter import *
+from tkinter import ttk
 from PIL import ImageTk, Image
 from tkinter import messagebox
 root =Tk()
@@ -15,8 +16,9 @@ import random
 
 def display():
     Sentence_starter = ['About 100 years ago', ' In the 10 BC', 'Once upon a time']
-    character = [' there lived a king.\n',' there was a man named Dwight\n',
+    character = [' there lived a king.\n',' there was a man named Dwight.\n',
              ' there lived a farmer.\n']
+
     time = [' One day', ' One full-moon night']
     story_plot = [' he was passing by\n',' he was going for walk to\n ']
     place = [' the mountains', ' the garden']
@@ -32,9 +34,21 @@ def display():
               random.choice(place) + random.choice(second_character) +
               random.choice(age) + random.choice(work)))
     label1.pack(padx=30,pady=5)
+
+    def on_click3():
+        label1.after(1, label1.destroy())
+
+    ttk.Button(root, text="Delete randomly generated Story", command=on_click3).pack()
+
+
 def jfk():
     label2=Label(root,text=('John Fitzgerald Kennedy (May 29, 1917 – November 22, 1963), often referred to by his initials JFK,\n was an American politician who served as the 35th president of\n the United States from 1961 until his assassination near the end of his third year in office. \n A Democrat, Kennedy represented Massachusetts in both houses of the U.S. Congress prior to his presidency.'))
     label2.pack(padx=30, pady=10)
+
+    def on_click2():
+        label2.after(100, label2.destroy())
+
+    ttk.Button(root, text="Delete JFK Story", command=on_click2).pack()
 
 
 def ron():
@@ -44,6 +58,10 @@ def ron():
         ('Cristiano Ronaldo dos Santos Aveiro GOIH ComM ( born 5 February 1985) is a Portuguese professional\n footballer who plays as a forward for Premier League club \nManchester United and captains the Portugal national team. Often considered the best player in the world \nand widely regarded as one of the greatest players of all time, Ronaldo has won five Ballon dOr awards'
          ))
     label3.pack(padx=30,pady=10)
+    def on_click1():
+        label3.after(1, label3.destroy())
+    ttk.Button(root, text="Delete Ronaldo Story", command=on_click1).pack()
+
 
 
 image=PhotoImage(file='click.png')
@@ -86,8 +104,7 @@ def myClick():
         k2 = str(random.randint(1, 8))
 
         Noun = [
-            "is a good person ", "is a brave person ", "lives in New Delhi ",
-            "lives in Mumbai ", "lives in Phagwara "
+            "is a good person ", "is a brave person "
         ]
 
         Setup = [
@@ -98,14 +115,14 @@ def myClick():
             "Kingdom was fighting a loosing battle"
         ]
         Noun2 = {
-            "1": " struggling to get by ",
-            "2": " the proud owner of a small textile mill ",
-            "3": " who worked as a small tailor ",
-            "4": " tending to his farm ",
-            "5": " a common man ",
-            "6": " and was a successful student ",
-            "7": " a middle class salaryman ",
-            "8": " a son to a small bussinessman "
+            "1": " struggling to get by. ",
+            "2": " the proud owner of a small business. ",
+            "3": " who worked as a small tailor. ",
+            "4": " tending to his farm. ",
+            "5": " a common man. ",
+            "6": " and was a successful student. ",
+            "7": " a middle class salaryman. ",
+            "8": " a son to a small bussinessman. "
         }
     if k == 2 and len(e2.get()) != 0:
         myLabel4 = Label(root,
@@ -117,7 +134,7 @@ def myClick():
         myLabel4 = Label(
             root,
             text=e1.get() + " " + Noun[k] + Noun2[k2] +
-            "Suddenly, all went awry when they were summoned to the magical kingdom!"
+            ". Suddenly, all went awry when they were summoned to the magical kingdom!"
         )
         myLabel4.pack(padx=30)
 
@@ -148,7 +165,7 @@ def myClick():
             "The king asked them to help them with fighting the dragon.",
             "The King pleaded them to join them in conquest against the dragon.",
             "The Kingdom was rejoyed with arrival of the new hero.",
-            "Suddenly the whole kingdom was filled with joy for now they had a fighting chance"
+            "Suddenly the whole kingdom was filled with joy for now they had a fighting chance."
         ]
 
         MonologueHero = [
@@ -170,12 +187,12 @@ def myClick():
         ]
 
         MonologueEnd = [
-            "Hero passing through dense kingdom forest to the battlefield was suddenly attacked",
-            "Suddenly the hero was attacked by magic casters with fireballs",
-            "The oracks surrounded our hero", "The dragon flew over our hero",
-            "Enemies hidden in thick forest surrounded our hero passing by to the battlefield",
-            "enemies arhers shot some arrows at our hero",
-            "Our hero party shot their warning shot at the dragon lair"
+            "Hero passing through dense kingdom forest to the battlefield was suddenly attacked.",
+            "Suddenly the hero was attacked by magic casters with fireballs.",
+            "The oracks surrounded our hero", "The dragon flew over our hero.",
+            "Enemies hidden in thick forest surrounded our hero passing by to the battlefield.",
+            "enemies arhers shot some arrows at our hero.",
+            "Our hero party shot their warning shot at the dragon lair."
         ]
         myLabel5 = Label(root,
                          text=random.choice(MonologueIntro) + " " +
@@ -187,6 +204,13 @@ def myClick():
                          text=random.choice(MonologueHero) + ", " +
                          random.choice(MonologueFight)+" "+random.choice(MonologueEnd))
         myLabel6.pack(padx=30)
+        def on_click():
+            myLabel5.after(1, myLabel5.destroy())
+            myLabel6.after(1, myLabel6.destroy())
+            myLabel4.after(1, myLabel4.destroy())
+
+        ttk.Button(root, text="Delete character Story", command=on_click).pack()
+
 
 
 label0 = Label(root,
@@ -197,13 +221,13 @@ label0.pack(pady=15)
 myLabel2 = Label(root,bg='#6cf5c5', text="Enter a Character Name",borderwidth=2)
 myLabel2.pack()
 
-e1 = Entry(root, width=18,border=5)
+e1 = Entry(root, width=18,border=5,bd=10)
 e1.pack()
 
 myLabel3 = Label(root,bg='#6cf5c5', text="Enter an Character Trait",borderwidth=2)
 myLabel3.pack()
 
-e2 = Entry(root, width=18,border=5)
+e2 = Entry(root, width=18,border=5,bd=10,insertwidth=4)
 e2.pack()
 
 myButton = Button(root, text="generate", command=myClick)
